@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Generador de Calendario | Digital Meg</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <section class="card">
+      <div class="brand-row">
+        <div class="brand-dot">DM</div>
+        <div>
+          <p class="eyebrow">Herramienta interna</p>
+          <h1>Generador de Calendario</h1>
+          <p class="subtitle">Genera links listos para pegar en Canva: Google Calendar y Apple/iPhone Calendar.</p>
+        </div>
+      </div>
+
+      <form id="eventForm" class="form-grid">
+        <label>
+          Nombre del evento
+          <input id="title" type="text" placeholder="Ej. XV Años de Marifer" required />
+        </label>
+        <label>
+          Fecha
+          <input id="date" type="date" required />
+        </label>
+        <label>
+          Hora de inicio
+          <input id="startTime" type="time" required />
+        </label>
+        <label>
+          Hora de fin
+          <input id="endTime" type="time" required />
+        </label>
+        <label class="full">
+          Zona horaria
+          <select id="timezone">
+            <option value="America/Mexico_City">México centro — America/Mexico_City</option>
+            <option value="America/Tijuana">México noroeste — America/Tijuana</option>
+            <option value="America/Cancun">Quintana Roo — America/Cancun</option>
+            <option value="America/Chicago">EE. UU. Central — America/Chicago</option>
+            <option value="America/New_York">EE. UU. Eastern — America/New_York</option>
+            <option value="America/Denver">EE. UU. Mountain — America/Denver</option>
+            <option value="America/Los_Angeles">EE. UU. Pacific — America/Los_Angeles</option>
+          </select>
+        </label>
+        <label class="full">
+          Ubicación
+          <input id="location" type="text" placeholder="Ej. Salón Jardín Real, Houston TX" />
+        </label>
+        <label class="full">
+          Descripción
+          <textarea id="description" rows="4" placeholder="Ej. ¡Te esperamos para celebrar juntos!"></textarea>
+        </label>
+        <button class="primary" type="submit">Generar links</button>
+      </form>
+    </section>
+
+    <section id="results" class="card results hidden" aria-live="polite">
+      <div>
+        <p class="eyebrow">Links listos</p>
+        <h2 id="previewTitle">Evento</h2>
+        <p id="previewMeta" class="preview-meta"></p>
+      </div>
+
+      <div class="result-block">
+        <div>
+          <h3>Google Calendar</h3>
+          <p>Este link abre Google Calendar con el evento precargado.</p>
+        </div>
+        <div class="actions">
+          <a id="googleLink" class="secondary" target="_blank" rel="noopener">Probar</a>
+          <button id="copyGoogle" class="ghost" type="button">Copiar link</button>
+        </div>
+      </div>
+
+      <div class="result-block">
+        <div>
+          <h3>Apple / iPhone Calendar</h3>
+          <p>Este es el link público que puedes pegar directamente en Canva.</p>
+          <input id="appleUrl" type="text" readonly style="margin-top:12px; font-size:12px;" />
+        </div>
+        <div class="actions">
+          <a id="appleLink" class="secondary" target="_blank" rel="noopener">Probar</a>
+          <button id="copyApple" class="ghost" type="button">Copiar link</button>
+        </div>
+      </div>
+
+      <div class="result-block">
+        <div>
+          <h3>Para Canva</h3>
+          <p>Pega el link de Apple/iPhone como hipervínculo del botón “Agregar al calendario”. Al abrirlo, el dispositivo recibe un archivo de calendario real (.ics).</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
