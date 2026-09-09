@@ -26,7 +26,7 @@ export default async (req) => {
     'VERSION:2.0',
     'PRODID:-//Digital Meg//Calendar Link//ES',
     'CALSCALE:GREGORIAN',
-    'METHOD:PUBLISH',
+    'METHOD:REQUEST',
     'BEGIN:VEVENT',
     `UID:${makeUid(title, start)}`,
     `DTSTAMP:${stamp}`,
@@ -41,7 +41,7 @@ export default async (req) => {
   return new Response(ics, {
     headers: {
       'Content-Type': 'text/calendar; charset=utf-8',
-      'Content-Disposition': 'inline; filename="evento.ics"',
+      'Content-Disposition': 'attachment; filename="evento.ics"',
       'Cache-Control': 'public, max-age=3600'
     }
   });
