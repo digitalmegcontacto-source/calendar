@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#EC0B62" />
+  <title>Digital Meg · Añadir al calendario</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="card" id="generatorView">
+      <div class="brand"><span class="brand-dot">♥</span> Digital Meg</div>
+      <span class="eyebrow">GENERADOR PERSONAL</span>
+      <h1>Genera un link universal de calendario</h1>
+      <p class="lead">Crea un solo enlace para pegar en Canva. Al abrirlo, tu invitado podrá elegir Google Calendar o Apple Calendar.</p>
+
+      <form id="eventForm" class="form-grid">
+        <label class="full">Nombre del evento
+          <input id="title" required placeholder="XV Años de Marifer" />
+        </label>
+
+        <label>Fecha
+          <input id="date" type="date" required />
+        </label>
+        <label>Zona horaria
+          <select id="timezone">
+            <option value="America/Mexico_City">México (CDMX)</option>
+            <option value="America/Cancun">México (Cancún)</option>
+            <option value="America/Tijuana">México (Tijuana)</option>
+            <option value="America/Chicago">EE. UU. Central</option>
+            <option value="America/New_York">EE. UU. Eastern</option>
+            <option value="America/Denver">EE. UU. Mountain</option>
+            <option value="America/Los_Angeles">EE. UU. Pacific</option>
+          </select>
+        </label>
+
+        <label>Hora de inicio
+          <input id="start" type="time" required />
+        </label>
+        <label>Hora de término
+          <input id="end" type="time" required />
+        </label>
+
+        <label class="full">Ubicación
+          <input id="location" placeholder="Salón Jardín Real" />
+        </label>
+        <label class="full">Descripción
+          <textarea id="description" rows="4" placeholder="¡Te esperamos para celebrar con nosotros!"></textarea>
+        </label>
+
+        <button class="primary full" type="submit">Generar link para Canva</button>
+      </form>
+
+      <section id="result" class="result hidden" aria-live="polite">
+        <span class="eyebrow">LISTO PARA CANVA</span>
+        <div class="copy-row">
+          <input id="universalUrl" readonly />
+          <button id="copyUniversal" type="button" class="secondary">Copiar link</button>
+        </div>
+        <p class="hint">Este es el único enlace que debes colocar en el botón “Añadir al calendario” de tu invitación.</p>
+        <button id="previewUniversal" type="button" class="ghost">Ver página del invitado</button>
+      </section>
+    </section>
+
+    <section class="card event-card hidden" id="eventView">
+      <div class="brand"><span class="brand-dot">♥</span> Digital Meg</div>
+      <span class="eyebrow">GUARDA LA FECHA</span>
+      <h1 id="eventTitle">Evento</h1>
+      <div class="event-details">
+        <div><span class="icon">◷</span><p><strong id="eventDate"></strong><br><span id="eventTime"></span></p></div>
+        <div id="locationRow"><span class="icon">⌖</span><p id="eventLocation"></p></div>
+      </div>
+      <p id="eventDescription" class="event-description"></p>
+
+      <div class="calendar-actions">
+        <button id="appleBtn" class="apple-btn" type="button"><span class="apple"></span> Apple Calendar</button>
+        <a id="googleBtn" class="google-btn" target="_blank" rel="noopener">▣ Google Calendar</a>
+      </div>
+
+      <div id="iosHelp" class="ios-help hidden">
+        <strong>¿Estás en iPhone?</strong>
+        <p>Si el evento no se abre automáticamente, usa Safari y vuelve a tocar “Apple Calendar”. El archivo se genera directamente en tu teléfono; no es un calendario de suscripción.</p>
+      </div>
+      <p class="powered">Calendario generado con Digital Meg</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
