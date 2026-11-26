@@ -20,7 +20,7 @@
           <input id="title" required placeholder="XV Años de Marifer" />
         </label>
 
-        <label>Fecha
+        <label>Fecha de inicio
           <input id="date" type="date" required />
         </label>
         <label>Zona horaria
@@ -38,6 +38,9 @@
         <label>Hora de inicio
           <input id="start" type="time" required />
         </label>
+        <label>Fecha de término (opcional)
+          <input id="endDate" type="date" />
+        </label>
         <label>Hora de término
           <input id="end" type="time" required />
         </label>
@@ -49,6 +52,10 @@
           <textarea id="description" rows="4" placeholder="¡Te esperamos para celebrar con nosotros!"></textarea>
         </label>
 
+        <label class="full">Idioma de la invitación
+          <select id="eventLang"><option value="auto">Automático (idioma del navegador)</option><option value="es">Español</option><option value="en">English</option></select>
+        </label>
+        <p class="hint full">Si la hora de término es anterior a la de inicio y no eliges fecha de término, se utilizará el día siguiente.</p>
         <button class="primary full" type="submit">Generar link para Canva</button>
       </form>
 
@@ -65,10 +72,11 @@
 
     <section class="card event-card hidden" id="eventView">
       <div class="brand"><span class="brand-dot">♥</span> Digital Meg</div>
-      <span class="eyebrow">GUARDA LA FECHA</span>
+      <div class="language-row"><button type="button" id="langEs" class="ghost">ES</button><button type="button" id="langEn" class="ghost">EN</button></div>
+      <span class="eyebrow" id="saveDate">GUARDA LA FECHA</span>
       <h1 id="eventTitle">Evento</h1>
       <div class="event-details">
-        <div><span class="icon">◷</span><p><strong id="eventDate"></strong><br><span id="eventTime"></span></p></div>
+        <div><span class="icon">◷</span><p><strong id="eventDate"></strong><br><span id="eventTime"></span><br><small id="eventZone"></small></p></div>
         <div id="locationRow"><span class="icon">⌖</span><p id="eventLocation"></p></div>
       </div>
       <p id="eventDescription" class="event-description"></p>
